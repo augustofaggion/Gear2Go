@@ -9,7 +9,10 @@
         </div>
         <div class="card-footer d-flex justify-content-between">
           <span class="fs-4"><%= gear.hourly_rate %>€/h</span>
+          <%# Goes to Gear.id %>
+          <%= link_to gear_path(gear) do%>
           <span class="btn btn-primary px-5 rounded-4">Book</span>
+          <% end %>
         </div>
       </div>
     </div>
