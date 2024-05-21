@@ -1,0 +1,17 @@
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% gears.each do |gear| %>
+    <div class="col">
+      <div class="card h-100 rounded-top-4 shadow">
+        <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= gear.name %> <%= gear.user.city ? "(#{gear.user.city})" : "" %></h5>
+          <p class="card-text"> <%= gear.description %></p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <span class="fs-4"><%= gear.hourly_rate %>€/h</span>
+          <span class="btn btn-primary px-5 rounded-4">Book</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
