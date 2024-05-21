@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # Goes to the id from gears
-  resources :gears, only: [:show]
+  resources :gears, only: [:show] do
+    resources :bookings, only: [:new, :create]
+  end
 end
