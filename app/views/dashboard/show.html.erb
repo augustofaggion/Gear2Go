@@ -1,0 +1,17 @@
+<h2>Your Bookings Dashboard</h2>
+<h5>Has to be made prettier</h5>
+
+
+    <% @bookings.each do |booking| %>
+    <ul class="my-3">
+        <li>Booking ID: <%= booking.id %></li>
+        <li>Time and date: <%= booking.start_time %></li>
+        <li>Gear: <%= booking.gear.name %></li>
+        <li>Description: <%= booking.gear.description %></li>
+        <li>Client Name: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
+        <li>Client Email: <%= booking.gear.description %></li>
+        <li>---</li>
+        <li>Business Name: <%= booking.gear.user.business_name ? booking.gear.user.business_name : "No business name given" %></li>
+        <li>City: <%= booking.gear.user.city ? booking.gear.user.city : "No city name given" %></li>
+    </ul>
+    <% end %>

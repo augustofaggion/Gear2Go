@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'gears#index'
+  get 'dashboard', to: 'dashboard#show'
 end
