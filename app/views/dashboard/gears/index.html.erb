@@ -6,7 +6,11 @@
   <% @gears.each do |gear| %>
     <div>
       <h2><%= gear.name %></h2>
-      <%= cl_image_tag gear.photo.key, height: 300, width: 400%>
+      <% if gear.photo.key? %>
+          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400 %>
+        <% else %>
+          <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
+        <% end %>
       <div>Number: <%= gear.id %></div>
       <div>Description: <%= gear.description %></div>
       <div>Price: <%= gear.hourly_rate %> € </div>
