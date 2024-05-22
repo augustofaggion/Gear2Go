@@ -12,9 +12,9 @@
 <div>Total Price: <%= @booking.total_price %>€</div>
 <br>
 <h3>Pickup Location</h3>
-<div>Business Name: <%= @booking.user.business_name ? @booking.user.business_name : "Business name not given" %></div>
-<div>City: <%= @booking.user.city ? @booking.user.city : "City not given" %></div>
-<div>Phone: <%= @booking.user.city ? @booking.user.city : "Phone not given" %></div>
+<div>Business Name: <%= @booking.owner.business_name ? @booking.owner.business_name : "Business name not given" %></div>
+<div>City: <%= @booking.owner.city ? @booking.owner.city : "City not given" %></div>
+<div>Phone: <%= @booking.owner.phone ? @booking.owner.phone : "Phone not given" %></div>
 
 <br>
 <h3>Important information</h3>
