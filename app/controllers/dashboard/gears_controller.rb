@@ -56,7 +56,7 @@ module Dashboard
     end
 
     def gear_params
-      params.require(:gear).permit(:name, :description, :hourly_rate)
+      params.require(:gear).permit(:name, :description, :hourly_rate, :photo)
     end
   end
 end

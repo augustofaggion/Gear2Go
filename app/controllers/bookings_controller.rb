@@ -1,6 +1,4 @@
 class BookingsController < ApplicationController
-
-
   def create
     @gear = Gear.find(params[:gear_id])
     date = Date.parse(booking_params[:start_time]) || Date.today
@@ -20,7 +18,6 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.total_price = @gear.hourly_rate
     @booking.start_time = booking_params[:start_time]
-
     if @booking.save
       redirect_to gear_booking_path(@gear, @booking), notice: 'Booking was successfully created.'
     else
