@@ -16,12 +16,11 @@
 </h2>
 <%= form_with(model: [@gear, @booking], url: gear_bookings_path(@gear), html: { class: 'needs-validation', novalidate: true }) do |form| %>
 
-  <%= form.hidden_field :date, input_html: { value: '2000-04-05' , class: "form-control" } %>
-  <% time_slots = @available_slots.map { |slot| slot.strftime("%H:%M") } %>
+  <%= form.date_field :date, class: "form-control" %>
 
   <div class="form-group mb-3">
     <%= form.label :start_time, "Select time", class: "form-label" %>
-    <%= form.select :start_time, time_slots, {}, { class: "form-control" } %>
+    <%= form.select :start_time, @available_slots, {}, { class: "form-control" } %>
   </div>
 
   <div class="form-group mb-3">
