@@ -1,8 +1,12 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% gears.each do |gear| %>
+    <% @gears.each do |gear| %>
     <div class="col">
       <div class="card h-100 rounded-top-4 shadow">
-        <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
+        <% if gear.photo.key? %>
+          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400 %>
+        <% else %>
+          <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= gear.name %> <%= gear.user.city ? "(#{gear.user.city})" : "" %></h5>
           <h6 class="card-title"> <%= gear.user.business_name ? "(#{gear.user.business_name})" : "" %></h6>
