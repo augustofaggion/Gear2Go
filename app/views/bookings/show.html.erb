@@ -1,0 +1,25 @@
+<div class="container p-3">
+
+<h1>Thank you, <%= @booking.user.first_name %></h1>
+
+<div class="mt-5">
+<h3>Your Booking Details</h3>
+<div>Gear: <%= @booking.gear.name %></div>
+<div>Description: <%= @booking.gear.description %></div>
+
+<div>Day: <%= @booking.start_time.strftime('%b %d, %Y') %> </div>
+<div>Time: <%= @booking.start_time.strftime('%H:%M h') %> </div>
+<div>Total Price: <%= @booking.total_price %>€</div>
+<br>
+<h3>Pickup Location</h3>
+<div>Business Name: <%= @booking.user.business_name ? @booking.user.business_name : "Business name not given" %></div>
+<div>City: <%= @booking.user.city ? @booking.user.city : "City not given" %></div>
+<div>Phone: <%= @booking.user.city ? @booking.user.city : "Phone not given" %></div>
+
+<br>
+<h3>Important information</h3>
+<% arrival_time = @booking.start_time - 15.minutes %>
+<div>Please arrive 15 minutes earlier at: <%= arrival_time.strftime('%H:%Mh') %></div>
+<br>
+We are looking forward seeing you!
+<%= @booking.gear.user.first_name ? @booking.gear.user.first_name : "" %></div>
