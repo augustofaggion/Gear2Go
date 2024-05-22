@@ -8,8 +8,10 @@ class GearsController < ApplicationController
 
   def show
     @booking = Booking.new
-    date = Date.today
-    @available_slots = @gear.available_slots(date)
+    @gear = Gear.find(params[:id])
+    # date = Date.today
+    # @available_slots = @gear.available_slots(date)
+    @next_7_days_with_slots = @gear.next_7_days_with_slots
   end
 
   private

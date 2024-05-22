@@ -8,5 +8,13 @@ class Gear < ApplicationRecord
     all_slots = (9..17).map { |hour| date.to_time.change(hour: hour) }
     all_slots - booked_slots
   end
+
+  def next_7_days_with_slots
+    (0..6).map do |i|
+      date = Date.today + i.days
+      available_slots = self.available_slots(date)
+      { date: date, slots: available_slots }
+    end
+  end
 end
 
