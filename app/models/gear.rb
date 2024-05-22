@@ -1,6 +1,7 @@
 class Gear < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_one_attached :photo
 
   def available_slots(date)
     booked_slots = bookings.where(start_time: date.beginning_of_day..date.end_of_day).pluck(:start_time)
@@ -8,3 +9,4 @@ class Gear < ApplicationRecord
     all_slots - booked_slots
   end
 end
+

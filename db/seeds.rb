@@ -9,6 +9,8 @@
 #   end
 
 # First user a@wagon.com password: a
+user_account1 = User.new(email: "a@wagon", password: "a", first_name: "John", last_name: "Doe", street: "123 Main St", city: "Malaga, Spain", phone: "123-456-7890", postcode: "33101", business_name: "John's Gear")
+user_account1.save
 user_gear1 = Gear.new(name: "Surfboard", description: "A surfboard", hourly_rate: 10, user_id: 1)
 user_gear1.save
 
@@ -19,7 +21,7 @@ user_gear3 = Gear.new(name: "Beach umbrella", description: "Good for big familie
 user_gear3.save
 
 # Second user
-user_account2 = User.new(email: "b@wagon.com", password: "b")
+user_account2 = User.new(email: "b@wagon.com", password: "b", first_name: "Jane", last_name: "Dindon", street: "456 Main St", city: "Miami, USA", phone: "123-456-7890", postcode: "33101", business_name: "Surfin' Gears rental")
 user_account2.save
 
 user2_gear1 = Gear.new(name: "Boat", description: "A Boat", hourly_rate: 100, user_id: 1)
@@ -32,7 +34,7 @@ user2_gear3 = Gear.new(name: "Beach umbrella", description: "Good for big famili
 user2_gear3.save
 
 # Third user
-user_account3 = User.new(email: "c@wagon.com", password: "c")
+user_account3 = User.new(email: "c@wagon.com", password: "c", first_name: "Jack", last_name: "Joe", street: "789 Main St", city: "Recife, Brazil", phone: "123-456-7890", postcode: "33101", business_name: "Jack's & Boats")
 user_account3.save
 
 user3_gear1 = Gear.new(name: "Submarine", description: "A Submarine", hourly_rate: 500, user_id: 1)
@@ -43,3 +45,5 @@ user3_gear2.save
 
 user3_gear3 = Gear.new(name: "Beach umbrella", description: "Good for big families", hourly_rate: 5, user_id: 1)
 user3_gear3.save
+
+puts "Seeds created"
