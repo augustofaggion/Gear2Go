@@ -32,9 +32,13 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+
+
   private
 
   def booking_params
     params.require(:booking).permit(:start_time, :first_name, :last_name, :email, :date)
   end
+
+
 end

@@ -16,11 +16,14 @@
 </h2>
 <%= form_with(model: [@gear, @booking], url: gear_bookings_path(@gear), html: { class: 'needs-validation', novalidate: true }) do |form| %>
 
-  <%= form.date_field :date, class: "form-control" %>
+  <% dates = @next_7_days_with_slots.map { |day| day[:date] } %>
+
+  <% available_slots = @next_7_days_with_slots.first[:slots] %>
+  <%= form.select :date, dates , class: "form-control" %>
 
   <div class="form-group mb-3">
     <%= form.label :start_time, "Select time", class: "form-label" %>
-    <%= form.select :start_time, @available_slots, {}, { class: "form-control" } %>
+    <%= form.select :start_time, available_slots, {}, { class: "form-control" } %>
   </div>
 
   <div class="form-group mb-3">
