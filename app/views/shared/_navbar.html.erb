@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm bg-dark border-bottom navbar-lewagon" data-bs-theme="dark">
-  <div class="container-fluid">
+<div class="navbar navbar-expand-sm bg-dark border-bottom navbar-lewagon d-flex" data-bs-theme="dark">
+  <div class="container-fluid d-flex align-items-center">
     <%= link_to root_path, class: "navbar-brand" do %>
       <div class="h1 fw-bold">Gear2Go</div>
     <% end %>
@@ -9,8 +9,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto d-flex align-items-center">
         <% if user_signed_in? %>
+        <li class="nav-tiem mx-3">
+          <%= link_to dashboard_path, class: "nav-link" do%>
+          <%= current_user.business_name %>
+          <% end %>
+        </li>
           <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fs-3 text fa-solid fa-user text-white"></i>
