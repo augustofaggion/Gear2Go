@@ -13,12 +13,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :show]
   end
 
-  namespace :dashboard, only:[:show ]do
+  namespace :dashboard, only: [:show ] do
     resources :gears, except: [:show]
   end
 
   get 'dashboard', to: 'dashboard#show'
-
-
 
 end
