@@ -1,25 +1,25 @@
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     <% @gears.each do |gear| %>
     <div class="col">
-      <div class="card h-100 rounded-top-4 shadow">
-        <% if gear.photo.key? %>
-          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400 %>
-        <% else %>
-          <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= gear.name %> <%= gear.user.city ? "(#{gear.user.city})" : "" %></h5>
-          <h6 class="card-title"> <%= gear.user.business_name ? "(#{gear.user.business_name})" : "" %></h6>
-          <p class="card-text"> <%= gear.description %></p>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
-          <span class="fs-4"><%= gear.hourly_rate %>€/h</span>
-          <%# Goes to Gear.id %>
-          <%= link_to gear_path(gear) do%>
-          <span class="btn btn-primary px-3 rounded-4">Book</span>
+
+      <div class="card h-100 rounded-4 ">
+        <%= link_to gear_path(gear), class: "stretched-link text-docoration-none", style: "color: inherit;" do %>
+          <% if gear.photo.key? %>
+            <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 150, width: 150 %>
+          <% else %>
+            <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
           <% end %>
+        <% end %>
+        <div class="card-body px-2">
+          <div ><strong><%= gear.name %></strong></div>
+          <div class="card-text text-decoration-none"> <%= gear.description %></div>
         </div>
-      </div>
+        <div class="card-footer text-muted py-0 px-2 bg-white"><small><%= gear.user.business_name ? "#{gear.user.business_name}," : "" %> <%= gear.user.city ? "#{gear.user.city}" : "" %></small></div>
+          <div class="card-footer d-flex justify-content-between">
+            <div></div>
+            <div>Price <%= gear.hourly_rate %>€/h</div>
+          </div>
+        </div>
     </div>
   <% end %>
 </div>
