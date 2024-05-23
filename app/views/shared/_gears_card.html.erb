@@ -3,7 +3,7 @@
     <div class="col">
       <div class="card h-100 rounded-top-4 shadow">
         <% if gear.photo.key? %>
-          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400 %>
+          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 300, width: 400, crop: :scale %>
         <% else %>
           <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
         <% end %>
