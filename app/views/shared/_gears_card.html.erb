@@ -5,7 +5,7 @@
       <div class="card h-100 rounded-4 ">
         <%= link_to gear_path(gear), class: "stretched-link text-docoration-none", style: "color: inherit;" do %>
           <% if gear.photo.key? %>
-            <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 150, width: 150 %>
+            <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 300, width: 400, crop: :scale %>
           <% else %>
             <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
           <% end %>
