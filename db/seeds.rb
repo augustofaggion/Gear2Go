@@ -83,4 +83,42 @@ file9 = File.open(Rails.root.join('app', 'assets', 'images', 'cooler.avif'))
 user3_gear3.photo.attach(io: file9, filename: "cooler.avif", content_type: "image/avif")
 user3_gear3.save
 
-puts "Seeds created successfully! :D"
+puts "Seeds for businness owner successfully! :D"
+puts "Creating seeds for customers"
+puts "Creating bookings customer 1"
+# Customer from user 1
+customer1 = User.create!(first_name: "John", last_name: "Doe", email: "john@gmail.com", password: "a")
+Booking.create!(gear: user1_gear1, start_time: Date.today, total_price: user1_gear1.hourly_rate, user: customer1)
+
+customer2 = User.create!(first_name: "Jane", last_name: "Smith", email: "jane@gmail.com", password: "a")
+Booking.create!(gear: user1_gear2, start_time: Date.today + 1, total_price: user1_gear2.hourly_rate, user: customer2)
+
+customer3 = User.create!(first_name: "Mike", last_name: "Johnson", email: "jae@gmail.com", password: "a")
+Booking.create!(gear: user1_gear3, start_time: Date.today + 2, total_price: user1_gear3.hourly_rate, user: customer3)
+
+# Customer from user 2
+puts "Creating bookings customer 2"
+
+
+customer4 = User.create!(first_name: "Maria", last_name: "Garcia", email: "maria@gmail.com", password: "a")
+Booking.create!(gear: user2_gear1, start_time: Date.today, total_price: user2_gear1.hourly_rate, user: customer4)
+
+customer5 = User.create!(first_name: "Carlos", last_name: "Gonzalez", email: "carlos@gmail.com", password: "a")
+Booking.create!(gear: user2_gear2, start_time: Date.today + 1, total_price: user2_gear2.hourly_rate, user: customer5)
+
+customer6 = User.create!(first_name: "Sofia", last_name: "Martinez", email: "sofia@gmail.com", password: "a")
+Booking.create!(gear: user2_gear3, start_time: Date.today + 2, total_price: user2_gear3.hourly_rate, user: customer6)
+
+puts "Creating bookings customer 3"
+
+# Customer from user 3
+customer7 = User.create!(first_name: "Luis", last_name: "Hernandez", email: "luis@gmail.com", password: "a")
+Booking.create!(gear: user3_gear1, start_time: Date.today, total_price: user3_gear1.hourly_rate, user: customer7)
+
+customer8 = User.create!(first_name: "Ana", last_name: "Lopez", email: "ana@gmail.com", password: "a")
+Booking.create!(gear: user3_gear2, start_time: Date.today + 1, total_price: user3_gear2.hourly_rate, user: customer8)
+
+customer9 = User.create!(first_name: "Pedro", last_name: "Ramirez", email: "pedro@gmail.com", password: "a")
+Booking.create!(gear: user3_gear3, start_time: Date.today + 2, total_price: user3_gear3.hourly_rate, user: customer9)
+
+puts "Seeds for customers successfully! :D"

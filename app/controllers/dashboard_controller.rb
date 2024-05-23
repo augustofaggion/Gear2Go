@@ -3,10 +3,11 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    # @bookings = current_user.bookings
     if current_user.business_name.present?
-      @bookings = current_user.booked_gears.upcoming
+      @bookings = current_user.booked_gears
     else
-      @bookings = current_user.bookings.upcoming
+      @bookings = current_user.bookings
     end
   end
 end
