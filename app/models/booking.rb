@@ -5,5 +5,5 @@ class Booking < ApplicationRecord
   has_one :owner, through: :gear, source: :user
 
   scope :upcoming, -> { where("start_time >= ?", Date.today).order(start_time: :asc) }
-  
+  scope :past, -> { where("start_time < ?", Date.today).order(start_time: :desc) }
 end
