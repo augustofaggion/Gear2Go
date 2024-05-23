@@ -4,10 +4,6 @@ class DashboardController < ApplicationController
 
   def show
     # @bookings = current_user.bookings
-    if current_user.business_name.present?
       @bookings = current_user.booked_gears
-    else
-      @bookings = current_user.bookings
-    end
   end
 end

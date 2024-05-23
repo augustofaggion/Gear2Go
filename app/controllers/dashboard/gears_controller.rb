@@ -6,11 +6,6 @@ module Dashboard
     before_action :ensure_business_owner
     before_action :set_gear, only: [:edit, :update]
 
-
-    def index
-      @gears = current_user.gears
-    end
-
     def new
       @gear = current_user.gears.build
     end

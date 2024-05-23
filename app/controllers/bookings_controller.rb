@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+
+  def index
+    @bookings = current_user.booked_gears.upcoming
+  end
   def create
     @gear = Gear.find(params[:gear_id])
     date = Date.parse(booking_params[:start_time]) || Date.today
