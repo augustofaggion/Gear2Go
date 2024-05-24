@@ -10,8 +10,10 @@
 
 # First user a@wagon.com password: a
 puts "Destroying all seeds"
-User.destroy_all
+
+Booking.destroy_all
 Gear.destroy_all
+User.destroy_all
 
 puts "Creating new seeds"
 
