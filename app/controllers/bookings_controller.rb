@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
   def create
     @gear = Gear.find(params[:gear_id])
     date = Date.parse(booking_params[:start_time]) || Date.today
-    @available_slots = @gear.available_slots(date)
+    @available_slots = @gear.available_slots_for_day(date)
 
     # Find or create the user
     @user = User.find_or_initialize_by(email: booking_params[:email])
