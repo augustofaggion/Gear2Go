@@ -1,12 +1,11 @@
 class GearsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
-  before_action :authenticate_user!
-  before_action :ensure_business_owner
-  before_action :set_gear, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  #before_action :authenticate_user!, only: [:my_gears]
+  # before_action :ensure_business_owner
+  # before_action :set_gear
 
   def index
     @gears = Gear.joins(:user)
-
     if params[:query].present?
       @gears = @gears.where("users.city ILIKE ?", "%#{params[:query]}%")
     end
@@ -47,7 +46,7 @@ class GearsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @gear = Gear.find(params[:id])
     @gear.destroy
@@ -56,17 +55,17 @@ class GearsController < ApplicationController
 
   private
 
-  def ensure_business_owner
-    unless current_user.business_name.present?
-      redirect_to root_path, alert: "Access denied."
-    end
-  end
+  # def ensure_business_owner
+  #   unless current_user.business_name.present?
+  #     redirect_to root_path, alert: "Access denied."
+  #   end
+  # end
 
-  def set_gear
-    @gear = current_user.gears.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to my_gears_path, alert: "Gear not found."
-  end
+  # def set_gear
+  #   @gear = current_user.gears.find(params[:id])
+  # rescue ActiveRecord::RecordNotFound
+  #   redirect_to my_gears_path, alert: "Gear not found."
+  # end
 
   def gear_params
     params.require(:gear).permit(:name, :description, :hourly_rate, :photo)
