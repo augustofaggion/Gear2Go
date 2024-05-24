@@ -1,55 +1,66 @@
-<div>
-<h1><%= @gear.name %></h1>
-<div>Description: <%= @gear.description %></div>
-<div>Price: <%= @gear.hourly_rate %>€/hour</div>
-<br>
-<div>Location:</div>
-<div><%= @gear.user.business_name ? @gear.user.business_name : "Business name not given" %></div>
-<div><%= @gear.user.city ? @gear.user.city : "City name not given" %></div>
-</div>
-
-
-<div class="mt-5">
-<h1>Booking Form</h1>
-<h2 class="mb-4">
-</h2>
-<% dates = @next_7_days_with_slots.map { |day| day[:date] } %>
-<% available_slots = @next_7_days_with_slots.first[:slots] %>
-
-
-<%= form_with(model: [@gear, @booking], url: gear_bookings_path(@gear), html: { class: 'needs-validation', novalidate: true }) do |form| %>
-  <div data-controller="booking" data-booking-slots-value="<%= @next_7_days_with_slots.to_json %>" >
-    <% dates.each do |date| %>
-      <div class="text-white btn btn-primary m-1" data-booking-target="date" data-action="click->booking#switchDate">
-        <%= date %>
+<div class="container">
+  <div class="row">
+    <div class="col-4 border">
+      <div class="w-50">
+        <% if @gear.photo.key? %>
+          <%= cl_image_tag @gear.photo.key, class: "card-img-top rounded-5", crop: :fill%>
+        <% else %>
+          <div>no image </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-8 border">
+      <h1><%= @gear.name %></h1>
+      <div>Description: <%= @gear.description %></div>
+      <div>Price: <%= @gear.hourly_rate %>€/hour</div>
+      <br>
+      <div>Location:</div>
+      <div><%= @gear.user.business_name ? @gear.user.business_name : "Business name not given" %></div>
+      <div><%= @gear.user.city ? @gear.user.city : "City name not given" %></div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-12">
+      <div class="mt-5">
+        <h1>Booking Form</h1>
+        <div>Choose a date</div>
+        <% dates = @next_7_days_with_slots.map { |day| day[:date] } %>
+        <% available_slots = @next_7_days_with_slots.first[:slots] %>
+        <%= form_with(model: [@gear, @booking], url: gear_bookings_path(@gear), html: { class: 'needs-validation', novalidate: true }) do |form| %>
+          <div data-controller="booking" data-booking-slots-value="<%= @next_7_days_with_slots.to_json %>" >
+            <% dates.each do |date| %>
+              <div class="text-white btn btn-primary m-1" data-booking-target="date" data-action="click->booking#switchDate">
+                <%= date %>
+              </div>
+            <% end %>
+          </div>
 
-    <div class="form-group mb-3">
-      <%= form.label :start_time, "Select time", class: "form-label" %>
-      <%= form.select :start_time, available_slots, {}, { class: "form-control", data: { booking_target: "timeSelect"} } %>
+          <div class="form mt-3">
+            <div class="form-group mb-3">
+              <%= form.label :start_time, "Select a time", class: "form-label" %>
+              <%= form.select :start_time, available_slots, {}, { class: "form-control", data: { booking_target: "timeSelect"} } %>
+            </div>
+
+            <div class="form-group mb-3">
+              <%= form.label :first_name, class: "form-label" %>
+              <%= form.text_field :first_name, class: "form-control" %>
+            </div>
+
+            <div class="form-group mb-3">
+              <%= form.label :last_name, class: "form-label" %>
+              <%= form.text_field :last_name, class: "form-control" %>
+            </div>
+
+            <div class="form-group mb-3">
+              <%= form.label :email, class: "form-label" %>
+              <%= form.email_field :email, class: "form-control" %>
+            </div>
+
+            <div class="form-group mt-4">
+              <%= form.submit "Book now", class: "text-white btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :first_name, class: "form-label" %>
-    <%= form.text_field :first_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :last_name, class: "form-label" %>
-    <%= form.text_field :last_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :email, class: "form-label" %>
-    <%= form.email_field :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group mt-4">
-    <%= form.submit "Book now", class: "text-white btn btn-primary" %>
-  </div>
-<% end %>
-
-
 </div>
