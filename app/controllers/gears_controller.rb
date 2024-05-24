@@ -47,7 +47,7 @@ class GearsController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     @gear = Gear.find(params[:id])
     @gear.destroy

@@ -7,16 +7,16 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   root to: 'gears#index'
 
-  resources :gears, only: [:show, :new, :edit, :create, :update, :delete] do
+  resources :gears, only: [:show, :new, :edit, :create, :update] do
     resources :bookings, only: [:create, :show]
   end
 
   get '/my_gears', to: 'gears#my_gears'
+  delete '/my_gears/:id', to: 'gears#destroy', as: 'my_gear'
 
   resources :bookings, only: [:index]
 
   # namespace :dashboard, only: [:show ] do
   #   resources :gears, except: [:show]
   # end
-
 end
