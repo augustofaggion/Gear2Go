@@ -1,18 +1,18 @@
-<div class="container">
-  <div class="row">
-      <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-4 pb-3">
+  <div class="row justify-content-center">
+      <%# Image %>
+      <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-3">
         <% if @gear.photo.key? %>
           <%= cl_image_tag @gear.photo.key, class: "card-img-top rounded-4", crop: :fill%>
         <% else %>
-          <div>no image </div>
+          <div>no image</div>
         <% end %>
       </div>
 
-      <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+      <%# Description part %>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-5">
         <h1><%= @gear.name %></h1>
-        <div><%= @gear.description %></div>
+        <div class="mb-3"><%= @gear.description %></div>
         <h3><%= @gear.hourly_rate %>€/hour</h3>
-
         <div class="mt-2">Rental Location:</div>
         <div><%= @gear.user.business_name ? @gear.user.business_name : "Business name not given" %></div>
         <div><%= @gear.user.city ? @gear.user.city : "City name not given" %></div>
@@ -20,8 +20,9 @@
 
       <div class="w-100"></div> <!-- line break for bootstrap -->
 
-      <div class="col-12 col-sm-12 col-lg-8 pb-5 ">
-        <div class="mt-5">
+      <%# Booking details %>
+      <div class="col-12 col-sm-12 col-lg-8 py-3">
+        <div>
           <h2>Booking details</h2>
           <div>Choose a date</div>
           <% dates = @next_7_days_with_slots.map { |day| day[:date] } %>
@@ -64,4 +65,3 @@
         </div>
       </div>
   </div>
-</div>
