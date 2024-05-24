@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
 
-
   # namespace :dashboard, only: [:show ] do
   #   resources :gears, except: [:show]
   # end
