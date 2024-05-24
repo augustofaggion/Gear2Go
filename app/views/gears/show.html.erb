@@ -20,7 +20,7 @@
 <%= form_with(model: [@gear, @booking], url: gear_bookings_path(@gear), html: { class: 'needs-validation', novalidate: true }) do |form| %>
   <div data-controller="booking" data-booking-slots-value="<%= @next_7_days_with_slots.to_json %>" >
     <% dates.each do |date| %>
-      <div class="btn btn-primary m-1" data-booking-target="date" data-action="click->booking#switchDate">
+      <div class="text-white btn btn-primary m-1" data-booking-target="date" data-action="click->booking#switchDate">
         <%= date %>
       </div>
     <% end %>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="form-group mt-4">
-    <%= form.submit "Book now", class: "btn btn-primary" %>
+    <%= form.submit "Book now", class: "text-white btn btn-primary" %>
   </div>
 <% end %>
 
