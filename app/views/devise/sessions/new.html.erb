@@ -1,6 +1,6 @@
-<h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <h2>Log in</h2>
   <div class="form-inputs">
     <%= f.input :email,
                 required: false,
@@ -13,8 +13,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in", class: "btn btn-primary"  %>
+    <%= f.button :submit, "Log in", class: "text-white btn btn-primary"  %>
   </div>
 <% end %>
 
-<div class="mt-4"><%= render "devise/shared/links" %></div>
+<div class="pb-5 mt-4"><%= render "devise/shared/links" %></div>
