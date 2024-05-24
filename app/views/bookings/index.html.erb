@@ -1,17 +1,13 @@
 <h2>Upcoming Bookings</h2>
-  <div>
-    <%= current_user.business_name ? current_user.business_name : "#{current_user.first_name} #{current_user.last_name}" %>
-  </div>
-
   <div class="row w-100 my-3 mx-0">
     <div class="col me-1 p-0">
-      <div class="card border mx-sm-1 p-2 shadow rounded-5 bg-info-subtle">
+      <div class="card border mx-sm-1 p-2 shadow rounded-4 bg-info-subtle">
         <div class="text-center mt-2"><h5># Bookings</h5></div>
         <div class="text-center"><h1><%= @bookings.count %></h1></div>
       </div>
     </div>
     <div class="col ms-1 p-0">
-      <div class="card border mx-sm-1 p-2 shadow rounded-5 bg-info-subtle">
+      <div class="card border mx-sm-1 p-2 shadow rounded-4 bg-info-subtle">
         <div class="text-center mt-2"><h5>Value</h5></div>
         <div class="text-center"><h1><%= @bookings.sum(&:total_price) %>€</h1></div>
       </div>
@@ -19,14 +15,15 @@
   </div>
 
   <% @bookings.group_by { |booking| booking.start_time.to_date }.each do |date, bookings| %>
-    <h4 class="mt-4 border-bottom">
-        <%= date.strftime("%a %B %d, %Y") %>
-        <%= date == Date.today ? "- Today" : "" %>
-        <%= date == Date.today + 1 ? "(Tomorrow)" : "" %>
-      </h4>
+    <h4 class="py-2 mt-3 border-bottom">
+      <%= date.strftime("%a %B %d, %Y") %>
+      <%= date == Date.today ? "- Today" : "" %>
+      <%= date == Date.today + 1 ? "(Tomorrow)" : "" %>
+    </h4>
+
     <% bookings.group_by { |booking| booking.start_time }.each do |time, bookings| %>
-      <div class="h5 mt-3"> <%= time.strftime("%H:%M") %> - <%= (time + 1.hour).strftime("%H:%M") %></div>
-        <div class="my-2 border p-2 rounded-5 bg-white shadow">
+      <div class="h5 mt-3"> <%= time.strftime("%H:%Mh") %> - <%= (time + 1.hour).strftime("%H:%Mh") %></div>
+        <div class="my-2 border p-2 rounded-4 bg-white shadow">
           <% bookings.each do |booking| %>
           <div class="d-flex">
             <div class="p-2">
@@ -34,7 +31,7 @@
             </div>
             <div class="p-2 flex-grow-1">
               <div>
-                <h5 class="mb-0" ><%= booking.gear.name %></h5>
+                <h5 class="mb-0" ><%= booking.gear.name %> #<%= booking.gear.id %></h5>
                 <div class="text-muted">
                   <small>Booking <%= booking.id %> - booked at <%= booking.created_at.strftime("%B %d, %Y - %H:%M") %> </small>
                 </div>
