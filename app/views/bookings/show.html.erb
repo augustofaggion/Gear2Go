@@ -34,9 +34,13 @@
       <p class="fs-2">Important information</p>
       <% arrival_time = @booking.start_time - 15.minutes %>
       <p>Please arrive 15 minutes earlier at: <%= arrival_time.strftime('%H:%Mh') %></p>
-      <br>
       <p>We are looking forward seeing you!</p>
       <%= @booking.gear.user.first_name ? @booking.gear.user.first_name : "" %>
+      <br>
+      <br>
+      <%= link_to root_path do%>
+        <button class="text-white btn btn-primary">Continue Shopping</button>
+      <% end %>
     </div>
   </div>
 </div>
