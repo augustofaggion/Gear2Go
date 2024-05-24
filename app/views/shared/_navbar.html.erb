@@ -1,9 +1,9 @@
-<div class="navbar navbar-expand navbar-lewagon bg-warning-subtle border-bottom box-shadow">
-  <div class="container-fluid p-2">
+<div class="navbar navbar-expand navbar-lewagon border-bottom border-light-subtle" style="background-color:#F9F9F9">
+  <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <span class="h2"><i class="fa-solid fa-umbrella-beach mx-1 px-1"></i>Gear2Go</span>
+      <span class="h4 fw-bold"><i class="fa-solid fa-umbrella-beach mx-1 px-1"></i>Gear2Go</span>
     <% end %>
-
+    
     <div class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if !user_signed_in? %>

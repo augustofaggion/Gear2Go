@@ -3,7 +3,19 @@ body {
   background-color: white;
 }
 
+html {
+  font-size: 14px;
+}
 
 .container-height {
   min-height: 100vh;
 }
+
+.zoom {
+  transition: transform 0.1s;
+}
+
+.zoom:hover {
+  transform: scale(1.02);
+}
+
