@@ -1,25 +1,46 @@
-<div class="container p-3">
-
-<h1>Thank you, <%= @booking.user.first_name %></h1>
-
-<div class="mt-5">
-<h3>Your Booking Details</h3>
-<div>Gear: <%= @booking.gear.name %></div>
-<div>Description: <%= @booking.gear.description %></div>
-
-<div>Day: <%= @booking.start_time.strftime('%b %d, %Y') %> </div>
-<div>Time: <%= @booking.start_time.strftime('%H:%M h') %> </div>
-<div>Total Price: <%= @booking.total_price %>€</div>
-<br>
-<h3>Pickup Location</h3>
-<div>Business Name: <%= @booking.owner.business_name ? @booking.owner.business_name : "Business name not given" %></div>
-<div>City: <%= @booking.owner.city ? @booking.owner.city : "City not given" %></div>
-<div>Phone: <%= @booking.owner.phone ? @booking.owner.phone : "Phone not given" %></div>
-
-<br>
-<h3>Important information</h3>
-<% arrival_time = @booking.start_time - 15.minutes %>
-<div>Please arrive 15 minutes earlier at: <%= arrival_time.strftime('%H:%Mh') %></div>
-<br>
-We are looking forward seeing you!
-<%= @booking.gear.user.first_name ? @booking.gear.user.first_name : "" %></div>
+<div class="text-center">
+  <div class="my-3">
+    <h1 class="text-">Thank you, <%= @booking.user.first_name %>!</h1>
+    <i class="fa-solid fs-1 fa-circle-check" style="color: #63E6BE;"></i>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 border p-5 mr-3">
+      <p class="fs-2">Your Booking Details</p>
+      <p class="fs-3">Gear: <%= @booking.gear.name %></p>
+      <p class="w-70 mx-auto">
+        <strong>Description:</strong> <%= @booking.gear.description %>
+      </p>
+      <p>
+        <strong>Day:</strong> <%= @booking.start_time.strftime('%b %d, %Y') %>
+      </p>
+      <p>
+        <strong>Time:</strong>  <%= @booking.start_time.strftime('%H:%M h') %>
+      </p>
+      <p>
+        <strong>Total Price:</strong> <%= @booking.total_price %>€
+      </p>
+    </div>
+    <div class="col-12 col-sm-6 border p-5">
+      <p class="fs-2">Address</p>
+      <address>
+        <strong>Business Name:</strong>  <%= @booking.owner.business_name ? @booking.owner.business_name : "Business name not given" %>
+        <br>
+        <strong>City:</strong> <%= @booking.owner.city ? @booking.owner.city : "City not given" %>
+        <br>
+        <strong>Phone:</strong> <%= @booking.owner.phone ? @booking.owner.phone : "Phone not given" %>
+      </address>
+    </div>
+    <div class="col-12 border p-5">
+      <p class="fs-2">Important information</p>
+      <% arrival_time = @booking.start_time - 15.minutes %>
+      <p>Please arrive 15 minutes earlier at: <%= arrival_time.strftime('%H:%Mh') %></p>
+      <p>We are looking forward seeing you!</p>
+      <%= @booking.gear.user.first_name ? @booking.gear.user.first_name : "" %>
+      <br>
+      <br>
+      <%= link_to root_path do%>
+        <button class="text-white btn btn-primary">Continue Shopping</button>
+      <% end %>
+    </div>
+  </div>
+</div>
