@@ -31,6 +31,7 @@ export default class extends Controller {
     event.target.classList.add("active")
     event.target.classList.add("btn-info")
     let slots = this.slotsValue
+    
     // Get the selected date
     let selectedDate = event.target.innerText
 
