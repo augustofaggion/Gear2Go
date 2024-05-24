@@ -1,7 +1,6 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     <% @gears.each do |gear| %>
     <div class="col">
-
       <div class="card h-100 rounded-4 bg-light-subtle">
         <%= link_to gear_path(gear), class: "stretched-link text-docoration-none", style: "color: inherit;" do %>
           <% if gear.photo.key? %>

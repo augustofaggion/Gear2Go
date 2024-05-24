@@ -1,32 +1,31 @@
 <h1>Your Gears</h1>
   <div class="mb-5">
-    <%= link_to 'Add Gear', new_gear_path, class: "btn btn-primary"  %>
+    <%= link_to 'Add Gear', new_gear_path, class: "btn btn-primary text-white"  %>
   </div>
-
-<div class="row">
-  <% @gears.each do |gear| %>
-    <div class="col-md-4 mb-4">
-      <div class="card bg-light-subtle">
-        <% if gear.photo.key? %>
-          <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400%>
-        <% else %>
-          <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= gear.name %></h5>
-          <p class="card-text"><strong>Number:</strong> <%= gear.id %></p>
-          <p class="card-text"><strong>Description:</strong> <%= gear.description %></p>
-          <p class="card-text"><strong>Price:</strong> <%= gear.hourly_rate %> €</p>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Edit', edit_gear_path(gear), class: " text-white btn btn-primary" %>
-          <%= form_with(url: my_gear_path(gear), method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
-            <%= button_tag(type: 'submit', class: "btn btn-danger") do %>
-              <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-            <% end %>
+  <div class="row">
+    <% @gears.each do |gear| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 bg-light-subtle rounded-4 shadow">
+          <% if gear.photo.key? %>
+            <%= cl_image_tag gear.photo.key, class: "card-img-top rounded-top-4", height: 200, width: 400%>
+          <% else %>
+            <img src="https://source.unsplash.com/random?boat" class="card-img-top rounded-top-4" alt="...">
           <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= gear.name %></h5>
+            <p class="card-text"><strong>Number:</strong> <%= gear.id %></p>
+            <p class="card-text"><strong>Description:</strong> <%= gear.description %></p>
+            <p class="card-text"><strong>Price:</strong> <%= gear.hourly_rate %> €</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <%= link_to 'Edit', edit_gear_path(gear), class: " text-white btn btn-primary" %>
+              <%= form_with(url: my_gear_path(gear), method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
+                <%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+                <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 </div>
