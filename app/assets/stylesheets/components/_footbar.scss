@@ -12,3 +12,9 @@ footer {
 .margin-footer {
   margin-top: 30px;
 }
+
+@media (max-width: 858px) {
+  .footer-middle a {
+    padding: 0;
+  }
+}
