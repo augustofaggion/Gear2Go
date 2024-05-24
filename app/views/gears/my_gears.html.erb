@@ -21,7 +21,9 @@
         <div class="card-footer d-flex justify-content-between">
           <%= link_to 'Edit', edit_gear_path(gear), class: " text-white btn btn-primary" %>
           <%= form_with(url: my_gear_path(gear), method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
-            <%= form.submit 'Delete', class: 'btn btn-danger' %>
+            <%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+              <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+            <% end %>
           <% end %>
         </div>
       </div>

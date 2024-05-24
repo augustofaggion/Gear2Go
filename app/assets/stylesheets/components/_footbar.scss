@@ -1,16 +1,14 @@
 footer {
   background-color: rgba(230, 230, 230, 0.249);
   border-top: 1px solid #e9ecef;
+  margin-top: 30px;
+  padding-bottom: 30px;
 }
 
 .footer-middle{
   a {
     text-decoration: none;
   }
-}
-
-.margin-footer {
-  margin-top: 30px;
 }
 
 @media (max-width: 858px) {
