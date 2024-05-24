@@ -15,8 +15,8 @@
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle mx-2" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://source.unsplash.com/random?people,profile,photo" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Bookings", dashboard_path, class: "dropdown-item" %>
-              <%= link_to 'Gears', dashboard_gears_path, class: "dropdown-item" %>
+              <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
+              <%= link_to 'Gears', my_gears_path, class: "dropdown-item" %>
               <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

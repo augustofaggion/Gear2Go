@@ -1,4 +1,10 @@
 class BookingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :create]
+
+  def index
+    @bookings = current_user.booked_gears.upcoming
+  end
+
   def create
     @gear = Gear.find(params[:gear_id])
     date = Date.parse(booking_params[:start_time]) || Date.today
@@ -34,6 +40,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_time, :first_name, :last_name, :email, :date)
   end
-
-
 end

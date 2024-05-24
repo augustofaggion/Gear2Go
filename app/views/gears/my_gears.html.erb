@@ -1,7 +1,7 @@
 <h1>Your Gears</h1>
-<div class="mb-5">
-  <%= link_to 'Add Gear', new_dashboard_gear_path, class: "btn btn-primary"  %>
-</div>
+  <div class="mb-5">
+    <%= link_to 'Add Gear', new_gear_path, class: "btn btn-primary"  %>
+  </div>
 
 <div class="row">
   <% @gears.each do |gear| %>
@@ -19,8 +19,8 @@
           <p class="card-text"><strong>Price:</strong> <%= gear.hourly_rate %> €</p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Edit', edit_dashboard_gear_path(gear), class: " text-white btn btn-primary" %>
-          <%= form_with(url: dashboard_gear_path(gear), method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
+          <%= link_to 'Edit', edit_gear_path(gear), class: " text-white btn btn-primary" %>
+          <%= form_with(url: my_gear_path(gear), method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
             <%= form.submit 'Delete', class: 'btn btn-danger' %>
           <% end %>
         </div>
